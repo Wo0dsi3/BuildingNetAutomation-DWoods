@@ -21,3 +21,6 @@ My project tasks (so far - is it ok to add more as I go?)
 * Bulk rollout of security policy configurations to routers and switches
 
 
+I have created a new branch. IOS Compliance.
+This branch is for creating a playbook that logs onto devices, gathers facts and based on the model and IOS running generates a report that tells me what devices don't meet our standard IOS software.
+
