@@ -1,0 +1,3 @@
+{% for host,facts in allhosts|dictsort %}
+Hostname:{{facts.ansible_net_hostname}} Model:{{facts.ansible_net_model}} IOS_Version:{{facts.ansible_net_version}}
+{% endfor %}

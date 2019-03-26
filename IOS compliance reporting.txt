@@ -1,0 +1,21 @@
+---
+- name: IOS reporting
+  gather_facts: no
+  connection: local
+  hosts: all
+  vars:
+    - results: results
+    - IOS_results: IOS_results
+    - allhosts: "{{hostvars}}"
+  tasks:
+    - file: path={{results}} state=directory
+      run_once: true
+    - file: path={{IOS_results}} state=directory
+      run_once: true
+    - ios_facts:
+        gather_subset: all
+      register: result
+    - template: src="report-file.j2" dest="{{results}}/IOS1.log"
+      run_once: true
+    - template: src="compliance-file.j2" dest="{{IOS_results}}/IOSResults.log"
+      run_once: true

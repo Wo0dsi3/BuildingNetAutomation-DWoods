@@ -1,0 +1,5 @@
+{% for host,facts in allhosts|dictsort %}
+{%   if facts.ansible_net_model is equal to '1841' and facts.ansible_net_version is not equal to '15.1' %}
+{{facts.ansible_net_hostname}}: needs an upgrade
+{%   endif %}
+{% endfor %}
