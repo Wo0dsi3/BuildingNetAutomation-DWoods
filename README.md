@@ -9,4 +9,8 @@ I have created a new branch. Data Models - Commissioning
 This branch is for creating a good data model. I wish to create inventory files and a commissioning playbook to push configurations to the new devices. I would love to add the compliance report I created (but need to fix) to the end of the playbook to sanity check the new build.
 
 Group vars file uploaded
+  location on Ansible server - btadmin@STLPBTDC0693:/etc/ansible/group_vars/MID.yml
 Conf file uploaded
+  location on Ansible server - btadmin@STLPBTDC0693:/etc/ansible/templates/MID.conf
+Site hosts file uploaded
+  location on Ansible server - btadmin@STLPBTDC0693:/etc/ansible/MID-hosts
