@@ -25,3 +25,6 @@ My project tasks (so far - is it ok to add more as I go?)
 I have created a new branch. IOS Compliance.
 This branch is for creating a playbook that logs onto devices, gathers facts and based on the model and IOS running generates a report that tells me what devices don't meet our standard IOS software.
 
+09/04/19
+I have created a new branch. Data Models - Commissioning
+This branch is for creating a good data model. I wish to create inventory files and a commissioning playbook to push configurations to the new devices. I would love to add the compliance report I created (but need to fix) to the end of the playbook to sanity check the new build.
