@@ -1,0 +1,5 @@
+
+[MID]
+Glan-EU-GPN-MID-MPLS net_host=10.2.230.125
+Glan-EU-GPN-MID-DMVPN net_host=10.2.230.78
+Glan-EU-GPN-MID-CORE net_host=10.2.227.91
