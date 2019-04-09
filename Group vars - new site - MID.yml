@@ -1,0 +1,77 @@
+
+# file: group_vars - new site/
+sitecode: MID
+site: Middlesborough
+BGPAS: 64673
+SNMPLocation: 1000000008,STE000000009973
+Site_allocation: 10.106.192.0 255.255.224.0
+Site_allocation2: 10.204.0.0 255.255.224.0
+
+#MPLS
+MPLShostname: Glan-EU-GPN-MID-MPLS
+MPLSCircuit1: 10Mbs GLAN113729 - BT circuit ref:ONEA630255/ETHA12439415
+MPLSDevice: MPLS RTR
+MPLSlocation: Unit 2
+MPLSLANIP: 10.204.5.2 255.255.255.248
+MPLSLo0: 10.254.10.125
+Vlan96: 10.204.5.0 0.0.0.7
+MPLSPEPeer: 10.254.8.45
+MPLSPeermask: 255.255.255.252
+MPLSpeBGPAS: 2856
+WANInterface: g0/0/1
+MPLSTAG: 3127
+MPLSCEPeer: 10.254.8.46
+LANINT: g0/0/0
+LANSUBINT: g0/0/0.96
+DMVPNiBGPPEER: 10.204.5.3
+
+
+#DMVPN
+DMVPNhostname: Glan-EU-GPN-MID-DMVPN
+DMVPNCircuit1: BTNET / 100MBPS SR:FTIP003392959 BT Customer Reference: 793940 Bearer Number: ONEA824928
+DMVPNDevice: DMVPN RTR
+DMVPNlocation: Unit 3
+DMVPNLANIP: 10.204.5.3 255.255.255.248
+Lo953: 10.254.11.115
+Vlan96: 10.204.5.0 0.0.0.7
+InternetGateway: 81.144.240.201
+InternetInterface: g0/1
+T132: 10.109.132.190
+LANINT: g0/0
+DMVPNLANSUBINT: g0/0.96
+MPLSiBGPPEER: 10.204.5.3
+
+
+#CORE
+CoreHostname: Glan-EU-GPN-MID-UNIT2-CORE
+Coredevice: CORE STACK
+Corelocation: Main comms room
+CoreLANIP: 10.25.40.4 255.255.255.255
+CoreVlan96: 10.25.40.1
+CoreVlan2IP: 10.25.32.1 255.255.254.0
+CoreVlan15IP: 10.25.34.1 255.255.254.0
+CoreVlan20IP: 10.25.36.1 255.255.255.0
+CoreVlan75IP: 10.25.37.1 255.255.255.0
+CoreVlan76IP: 10.25.38.1 255.255.255.0
+CoreVlan77IP: 10.25.39.1 255.255.255.0
+CoreVlan96IP: 10.25.40.1 255.255.255.248
+CoreVlan99IP: 10.25.40.9 255.255.255.248
+CoreVlan126IP: 10.25.41.1 255.255.255.0
+CoreVlan240IP: 10.25.42.1 255.255.255.0
+CoreVlan250IP: 10.25.43.1 255.255.255.0
+IPHelper: 10.20.136.101
+
+#VLANS
+Vlan_Data: 2
+Vlan_Voice: 15
+Vlan_Server: 20
+Vlan_VC: 22
+Vlan_WiFi_AP_MGT: 75
+Vlan_HHT: 76
+Vlan_GBS_Secure: 77 
+Vlan_Uplink_to_WAN: 96
+Vlan_MGT: 99
+Vlan_Apple: 126
+Vlan_Security: 240
+Vlan_Digital_Signage: 250
+
