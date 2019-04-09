@@ -1,0 +1,65 @@
+---
+ - name: Gather facts
+   gather_facts: no
+   connection: local
+   hosts: MID
+   tasks:
+    - name: Create Output Directory
+      file:
+        path: ./Output/{{ sitecode }}
+        state: directory
+      run_once: true
+
+    - name: Get Device Facts
+      ios_facts:
+        gather_subset: all
+        provider:
+          host: "{{ net_host | default(inventory_hostname) }}"
+          username: "{{ un }}"
+          password: "{{ pwd }}"
+          authorize: true
+          auth_pass: "{{ pwd }}"
+      register: iosfacts_out
+
+    - name: DEBUG OS VERSION
+      debug:
+        var: ansible_net_version
+
+    - name: DEBUG INTERFACE
+      debug:
+        var: ansible_net_interfaces
+    - copy: content="{{ iosfacts_out | to_nice_json }}" dest="./Output/{{ sitecode }}/{{ inventory_hostname }}
+.fct"
+
+    - name: Get facts from device
+      napalm_get_facts:
+        hostname: "{{ net_host }}"
+        username: "{{ un }}"
+        password: "{{ pwd }}"
+        dev_os: ios
+      register: napalm_get_facts_out
+    - name: print data
+      debug: var=result
+
+    - copy: content="{{ napalm_get_facts_out | to_nice_json }}" dest="./Output/{{ sitecode }}/{{ inventory_hos
+tname }}-napalm.fct"
+
+    - name: generate Configs
+      template:
+        src: ./templates/MID.conf
+        dest: ./Output/{{sitecode}}/{{inventory_hostname}}.cfg
+        trim_blocks: yes
+
+    - name: Load Configuration
+      napalm_install_config:
+        hostname: "{{ net_host }}"
+        username: "{{ un }}"
+        password: "{{ pwd }}"
+        dev_os: ios
+        config_file: ./Output/{{ sitecode }}/{{ inventory_hostname }}.cfg
+        diff_file: ./Output/{{ sitecode }}/{{ inventory_hostname }}.diff
+        commit_changes: True
+        replace_config: False
+
+    - pause:
+        seconds: 10
